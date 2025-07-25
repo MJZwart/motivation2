@@ -1,6 +1,8 @@
 
 <template>
-    <TaskList />
+    <div>
+        <TaskList />
+    </div>
 </template>
 
 <script lang="ts" setup>
