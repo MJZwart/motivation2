@@ -1,6 +1,6 @@
 <template>
-    <Register v-if="!loggingIn" />
-    <Login v-else />
+    <Register v-if="!loggingIn" @login="loggingIn = true" />
+    <Login v-else @register="loggingIn = false" />
 </template>
 
 <script setup lang="ts">

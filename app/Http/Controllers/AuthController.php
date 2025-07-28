@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 final class AuthController
@@ -23,9 +24,19 @@ final class AuthController
 
             $user = Auth::user();
 
+            // TODO Create user resource
             return $user;
         }
         // TODO Response message
         return new JsonResponse(null, 422);
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return;
     }
 }
