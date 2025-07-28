@@ -13,8 +13,18 @@ final class AuthController
 {
     public function register(RegisterUserRequest $request) {
         $validated = $request->validated();
-        $user = User::create($validated);
-        return $user;
+
+        User::create($validated);
+        
+        if (Auth::attempt(['username' => $validated['username'], 'password' => $validated['password']])) {
+            $request->session()->regenerate();
+
+            $user = Auth::user();
+
+            return $user;
+        }
+        // TODO Response message, if this happens something went wrong in creating or authenticating newly created user
+        return new JsonResponse(null, 418);
     }
 
     public function login(LoginRequest $request) {

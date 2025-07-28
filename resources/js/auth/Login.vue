@@ -23,7 +23,7 @@ const loginCredentials = ref({
     password: '',
 })
 
-const loginUser = async () => {
+const loginUser = () => {
     login(loginCredentials.value);
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
     <div flex flex-col max-w-3xl mx-auto>
-        <Navigation mb-2 w-full />
-        <AuthPage v-if="!isLoggedIn" w-full />
-        <div v-else gap-2 w-full>
+        <Navigation mb-2 />
+        <AuthPage v-if="!isLoggedIn" />
+        <div v-else flex flex-col gap-2>
             <VillageOverview panel-2 rounded-lg c-white p-2 />
             <TaskListOverview panel-1 rounded-lg c-white p-2 />
         </div>

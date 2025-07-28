@@ -1,6 +1,6 @@
 
 <template>
-    <div>
+    <div panel>
         <TaskList />
     </div>
 </template>

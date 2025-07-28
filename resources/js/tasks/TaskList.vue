@@ -7,7 +7,7 @@
                 <template v-for="task in tasks" :key="task.id">
                     <span>[ ] {{ task.task }}</span>
                 </template>
-                <span>
+                <form @submit.prevent="addItem">
                     <input 
                         p-2 
                         bg-transparent 
@@ -18,8 +18,8 @@
                         c-white 
                         v-model="newTask" 
                         placeholder="New item" />
-                    <button btn-sm btn @click="addItem">Add</button>
-                </span>
+                    <button btn-sm btn type="submit">Add</button>
+                </form>
             </div>
         </div>
     </div>
@@ -43,6 +43,7 @@ const newTask = ref('');
 
 const addItem = () => {
     tasks.value.push({id: tasks.value.length + 1, task: newTask.value});
+    newTask.value = '';
 }
 </script>
 
