@@ -14,5 +14,10 @@ import TaskListOverview from './tasks/TaskListOverview.vue';
 import VillageOverview from './village/VillageOverview.vue';
 import AuthPage from './auth/AuthPage.vue';
 import Navigation from './Navigation.vue';
-import { isLoggedIn } from './service/userRepository';
+import { isLoggedIn, getMe } from './service/userRepository';
+import { onMounted } from 'vue';
+
+onMounted(() => {
+    getMe();
+});
 </script>

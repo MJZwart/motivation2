@@ -26,3 +26,12 @@ export const register = async(credentials: {username: string, password: string, 
     if (!data) return console.error('Register failed, error message needed', data);
     user.value = data;
 }
+
+export const getMe = async() => {
+    try {
+        const {data} = await axios.get('/me');
+        user.value = data;
+    } catch (e) {
+        return;
+    }
+}

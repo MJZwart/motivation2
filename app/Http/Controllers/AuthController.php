@@ -41,6 +41,15 @@ final class AuthController
         return new JsonResponse(null, 422);
     }
 
+    public function me(Request $request) {
+        if (Auth::check()) {
+            $request->session()->regenerate();
+
+            return Auth::user();            
+        }
+        return new JsonResponse(null, 401);
+    }
+
     public function logout(Request $request) {
         Auth::logout();
 
