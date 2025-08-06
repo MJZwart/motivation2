@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\CustomException;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterUserRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 final class AuthController
@@ -21,10 +24,10 @@ final class AuthController
 
             $user = Auth::user();
 
-            return $user;
+            return new UserResource($user);
         }
-        // TODO Response message, if this happens something went wrong in creating or authenticating newly created user
-        return new JsonResponse(null, 418);
+        // If this happens something went wrong in creating or authenticating newly created user
+        throw new CustomException('Something went wrong with registering');
     }
 
     public function login(LoginRequest $request) {
@@ -34,20 +37,20 @@ final class AuthController
 
             $user = Auth::user();
 
-            // TODO Create user resource
-            return $user;
+            return new UserResource($user);
         }
-        // TODO Response message
-        return new JsonResponse(null, 422);
+        throw new CustomException('Username or password incorrect', Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function me(Request $request) {
         if (Auth::check()) {
             $request->session()->regenerate();
 
-            return Auth::user();            
+            $user = Auth::user();
+            
+            return new UserResource($user);
         }
-        return new JsonResponse(null, 401);
+        throw new CustomException('Not logged in', Response::HTTP_UNAUTHORIZED);
     }
 
     public function logout(Request $request) {
