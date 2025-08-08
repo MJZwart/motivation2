@@ -4,15 +4,15 @@
             <h3 my-2>Register new account</h3>
             <FormError name="username">
                 <label for="username">Username</label>
-                <input id="username" name="username" v-model="registerCredentials.username" />
+                <input input id="username" name="username" placeholder="Username" v-model="registerCredentials.username" />
             </FormError>
             <FormError name="password">
                 <label for="password">Password</label>
-                <input id="password" name="password" type="password" v-model="registerCredentials.password" />
+                <input input id="password" name="password" type="password" placeholder="Password" v-model="registerCredentials.password" />
             </FormError>
             <FormError name="password_confirmation">
                 <label for="password_confirmation">Repeat password</label>
-                <input id="password_confirmation" name="password_confirmation" type="password" v-model="registerCredentials.password_confirmation" />
+                <input input id="password_confirmation" name="password_confirmation" type="password" placeholder="Repeat password" v-model="registerCredentials.password_confirmation" />
             </FormError>
             <button btn type="submit" mt-2>Register</button>
         </form>

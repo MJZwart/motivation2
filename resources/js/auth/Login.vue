@@ -4,11 +4,11 @@
             <h3 my-2>Log in</h3>
             <FormError name="username">
                 <label for="username">Username</label>
-                <input id="username" name="username" v-model="loginCredentials.username" />
+                <input input id="username" name="username" placeholder="Username" v-model="loginCredentials.username" />
             </FormError>
             <FormError name="password">
                 <label for="password">Password</label>
-                <input id="password" type="password" name="password" v-model="loginCredentials.password" />
+                <input input id="password" type="password" name="password" placeholder="********" v-model="loginCredentials.password" />
             </FormError>
             <button btn type="submit" mt-2>Login</button>
         </form>

@@ -8,7 +8,7 @@
                     <span>[ ] {{ task.task }}</span>
                 </template>
                 <form @submit.prevent="addItem">
-                    <input 
+                    <input input 
                         p-2 
                         bg-transparent 
                         border-none 
