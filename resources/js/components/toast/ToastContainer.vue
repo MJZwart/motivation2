@@ -1,5 +1,5 @@
 <template>
-    <div absolute z-0 w-full h-full flex class="-my-2 -mx-2" pointer-events-none>
+    <div fixed bottom-0 right-0>
         <div ml-auto mt-auto>
             <ToastComp z-999 v-for="(toast, idx) in getToasts" :key="idx" :toast pointer-events-auto />
         </div>

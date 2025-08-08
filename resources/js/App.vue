@@ -19,7 +19,7 @@ import { isLoggedIn, getMe } from './service/userRepository';
 import { onMounted } from 'vue';
 import ToastContainer from './components/toast/ToastContainer.vue';
 
-onMounted(() => {
-    getMe();
+onMounted(async() => {
+    await getMe();
 });
 </script>
