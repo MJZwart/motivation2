@@ -8,7 +8,7 @@
             </FormError>
             <FormError name="password">
                 <label for="password">Password</label>
-                <input input id="password" type="password" name="password" placeholder="********" v-model="loginCredentials.password" />
+                <input input id="password" type="password" name="password" placeholder="Password" v-model="loginCredentials.password" />
             </FormError>
             <button btn type="submit" mt-2>Login</button>
         </form>

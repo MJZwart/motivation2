@@ -9,6 +9,16 @@ export default defineConfig({
         panel: 'p-2 rounded-lg bg-white bg-opacity-10',
         input: 'rounded-md px-2 py-2.5 b-none bg-opacity-30 bg-white focus:bg-opacity-50 shadow'
     },
+    // safelist: [
+    //     ...[
+    //         'info',
+    //         'warning',
+    //         'success',
+    //         'danger',
+    //     ].flatMap(color => [
+    //         `[bg~="${color}"]`,
+    //     ]),
+    // ],
     theme: {
         colors: {
             black: '#121212',
@@ -20,7 +30,11 @@ export default defineConfig({
                 blue: '#5eb9ea',
                 midblue: '#5e73ea',
                 purple: '#d55eea',
-            }
+            },
+            success: '#5eea8f',
+            warning: '',
+            danger: '#ea5e73',
+            info: '#5eb9ea',
         }
     }
 });

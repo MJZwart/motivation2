@@ -1,5 +1,6 @@
 <template>
-    <div flex flex-col max-w-3xl mx-auto>
+    <ToastContainer />
+    <div flex flex-col max-w-3xl mx-auto z-1>
         <Navigation mb-2 />
         <AuthPage v-if="!isLoggedIn" />
         <div v-else flex flex-col gap-2>
@@ -16,6 +17,7 @@ import AuthPage from './auth/AuthPage.vue';
 import Navigation from './Navigation.vue';
 import { isLoggedIn, getMe } from './service/userRepository';
 import { onMounted } from 'vue';
+import ToastContainer from './components/toast/ToastContainer.vue';
 
 onMounted(() => {
     getMe();
