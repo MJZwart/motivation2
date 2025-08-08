@@ -1,5 +1,5 @@
 <template>
-    <div panel flex>
+    <div panel flex mt-2>
         Nav
         <span ml-auto clickable @click="logout">Logout</span>
     </div>

@@ -5,7 +5,7 @@
             <h5>List title</h5>
             <div flex flex-col gap-1>
                 <template v-for="task in tasks" :key="task.id">
-                    <span>[ ] {{ task.task }}</span>
+                    <span>{{ task.task }}</span>
                 </template>
                 <form @submit.prevent="addItem">
                     <input input 
