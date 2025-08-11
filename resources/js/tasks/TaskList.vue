@@ -4,8 +4,8 @@
         <div>
             <h5>List title</h5>
             <div flex flex-col gap-1>
-                <template v-for="task in tasks" :key="task.id">
-                    <span>{{ task.task }}</span>
+                <template v-for="task in getTasks" :key="task.id">
+                    <span ml-2 my-1 hover:font-bold cursor-pointer @click="markComplete(task)">{{ task.task }}</span>
                 </template>
                 <form @submit.prevent="addItem">
                     <input input 
@@ -27,22 +27,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
-const tasks = ref([
-    {
-        id: 1,
-        task: 'This is a task',
-    },
-    {
-        id: 2,
-        task: 'This is also a task',
-    }
-]);
+import { createTask, getTasks, markComplete } from './taskService';
 
 const newTask = ref('');
 
-const addItem = () => {
-    tasks.value.push({id: tasks.value.length + 1, task: newTask.value});
+const addItem = async() => {
+    createTask({task: newTask.value, completed: null});
     newTask.value = '';
 }
 </script>

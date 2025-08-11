@@ -14,7 +14,7 @@ Route::middleware(['auth'])->group(function() {
     Route::prefix('task')->group(function() {
         Route::get('/', [TaskController::class, 'index']);
         Route::post('/', [TaskController::class, 'store']);
-        Route::post('/complete', [TaskController::class, 'toggleCompleted']);
+        Route::post('/complete/{task}', [TaskController::class, 'toggleCompleted']);
     });
 });
 
