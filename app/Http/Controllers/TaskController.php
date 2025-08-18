@@ -36,4 +36,10 @@ class TaskController extends Controller
 
         return new TaskResource($task);
     }
+
+    public function getCompletedTasks(): AnonymousResourceCollection {
+        $trashedTasks = Task::onlyTrashed()->where('user_id', Auth::user()->id)->get();
+
+        return TaskResource::collection($trashedTasks);
+    }
 }

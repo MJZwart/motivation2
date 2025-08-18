@@ -1,9 +1,8 @@
-[ ] Create a repository for tasks with easy state management. When storing a task, only send stored task back so it can be saved by id
-[ ] Create a backend for storing tasks, migration + controller + resource + request
-[ ] Tie creating of task to the backend
+[ ] Add link to see completed tasks
+[ ] Add option to see tasks completed today and maybe options to see per day which/how many tasks were completed
 
-Add link to see completed tasks
-Add option to see tasks completed today and maybe options to see per day which/how many tasks were completed
+[ ] Add a spinner of sorts to show loading
+[ ] Add spinner to buttons when loading happens
 
 Ideas:
 Daily the happiness of the village goes down by a set amount or percentage. Completing tasks will increase this amount.

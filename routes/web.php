@@ -15,6 +15,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/', [TaskController::class, 'index']);
         Route::post('/', [TaskController::class, 'store']);
         Route::post('/complete/{task}', [TaskController::class, 'toggleCompleted']);
+        Route::get('/completed', [TaskController::class, 'getCompletedTasks']);
     });
 });
 
