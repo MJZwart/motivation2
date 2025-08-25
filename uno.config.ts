@@ -6,19 +6,19 @@ export default defineConfig({
         clickable: 'text-primary cursor-pointer',
         btn: 'bg-primary bg-opacity-30 shadow py-3 px-3.5 border-none rounded-md',
         'btn-sm': 'py-2 px-2.5',
-        panel: 'p-2 rounded-lg bg-white bg-opacity-10',
+        panel: 'p-2 rounded-lg bg-white bg-opacity-7',
         input: 'rounded-md px-2 py-2.5 b-none bg-opacity-30 bg-white focus:bg-opacity-50 shadow'
     },
-    // safelist: [
-    //     ...[
-    //         'info',
-    //         'warning',
-    //         'success',
-    //         'danger',
-    //     ].flatMap(color => [
-    //         `[bg~="${color}"]`,
-    //     ]),
-    // ],
+    safelist: [
+        ...[
+            'info',
+            'warning',
+            'success',
+            'danger',
+        ].flatMap(color => [
+            `[bg~="${color}"]`,
+        ]),
+    ],
     theme: {
         colors: {
             black: '#121212',

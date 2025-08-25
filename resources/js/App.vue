@@ -1,12 +1,10 @@
 <template>
     <ToastContainer />
-    <div flex flex-col max-w-3xl mx-auto z-1>
-        <Navigation mb-2 />
+    <Navigation />
+    <VillageOverview v-if="isLoggedIn" rounded-lg c-white p-2 />
+    <div flex flex-col z-1 max-w-3xl mx-auto>
         <AuthPage v-if="!isLoggedIn" />
-        <div v-else flex flex-col gap-2>
-            <VillageOverview panel-2 rounded-lg c-white p-2 />
-            <TaskListOverview panel-1 rounded-lg c-white p-2 />
-        </div>
+        <TaskListOverview v-else rounded-lg c-white p-2 />
     </div>
 </template>
 

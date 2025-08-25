@@ -1,6 +1,6 @@
 
 <template>
-    <div panel>
+    <div panel max-w-3xl mx-auto w-full mt-2>
         <TaskList />
     </div>
 </template>

@@ -11,11 +11,13 @@
                     <input input 
                         p-2 
                         bg-transparent 
+                        rounded-none
                         border-none 
                         b-b-solid 
                         b-b-white 
                         b-b-2 
                         c-white 
+                        shadow-none
                         v-model="newTask" 
                         placeholder="New item" />
                     <button btn-sm btn type="submit">Add</button>

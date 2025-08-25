@@ -1,5 +1,5 @@
 <template>
-    <div panel>
+    <div panel w-full>
         <form flex flex-col mb-2 gap-1 @submit.prevent="registerUser">
             <h3 my-2>Register new account</h3>
             <FormError name="username">
