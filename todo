@@ -1,8 +1,81 @@
-[ ] Add link to see completed tasks
+[ ] Add link to see completed tasks to navbar. Create page
+[ ] On the page of completed tasks, show all tasks by day, and the numbers of each day, maybe average, plus total over last week. Paginate by dates if possible
 [ ] Add option to see tasks completed today and maybe options to see per day which/how many tasks were completed
 
 [ ] Add a spinner of sorts to show loading
 [ ] Add spinner to buttons when loading happens
+
+[ ] Create 3 task lists - chores, rest & relaxation, work & admin. Create database column for tasks for this, can just do enums (probably)
+[ ] Make the three task lists work on smaller devices
+[ ] Add a button to the task lists (each?) to allow for editing. Add edit options in the task component. Allow changing of name and deleting (without completing)
+[ ] Add option to make task repeatable to the editing part. Add 'active' and 'repeatable' (amount of days, 1 for daily, 7 for weekly etc) to database. When completing a repeatable, automatically create a new one with the desired repeatable time as 'active'.
+[ ] Create database for village.
+
+Village db
+
+-   id
+-   user_id
+-   timestamps
+-   villagers (int)
+-   progress
+
+-   coins
+-   food
+-   material
+
+-   happiness
+-   farmer
+-   labourer
+-   toolsmith
+-   artist
+-   researcher
+-   merchant
+
+[ ] ? Create modals
+[ ] When completing a task, gain progress points to village. Show this on the village component (progress bar?)
+[ ] Create automated ticks that increase village stuff, as per calculations below (which I will definitely make later)
+[ ] Add websockets (reverb)
+[ ] Use websockets to broadcast the improvement of the village and update on frontend
+[ ] Create section to assign villagers to jobs (with dynamic buttons)
+[ ] ? Create a button to auto assign villagers (set ratio, depending on unlock, maybe auto assign any new ones to farmers)
+[ ] All progress points finished?
+[ ] Create a reward for tasks which is +x% bonus to y.
+
+[ ] Add quest section on nav, create page
+[ ] Create quests in DB with set parameters which are based on population count (and thus expected time it takes)
+[ ] Find a way to give those quests to users and mark them as completed and give bonus?
+
+AN IDEA
+Have three task lists, each its own flavour
+
+1. Chores - boost to labour and farmers
+   These are things like housework, cooking, cleaning, etc. Has to be done but suck
+2. Hobbies/rest - boost to artists and researchers
+   It's encouraged to do stuff for your hobbies and find rest where you can, even if it's small
+3. Work/admin - boost to merchant and gain more coins
+   Stuff like paying bills, finishing work projects, light admin work. Separated to encourage more thoughtful separation of tasks
+
+-   Messages like 'You made a lot of progress yesterday' - when amount of tasks completed yesterday is higher than average or 'You haven't completed a task in a while' - when it's been x amount of days since last task completion. Tips to improve tasks 'Keep the tasks small' or 'If the tasks feel too big to start, divide them up into smaller bite-sized tasks'.
+
+Gain coins for every task completed -OR- gain boost to certain aspect for x amount of time.
+Gain progress points towards villagers for every task completed
+
+Manually set which villager does what task (buttons for +1, +5, +10, +50, +100 for later games, when amount is > threshold)
+Start with 5 villagers
+Each gain happens every x amount of minutes. Use websockets to set up?
+Farmer: food (each villager consumes food) - food can stock up, but when food is up, every progress stops, happiness will start to drop and you gain no villagers. You will need to manually assign more farmers to fix this.
+Labourer: materials - You cannot gain population when materials is too low. Progress points will stay, you will automatically gain a villager when you get the required amount of materials
+Artist: boosts happiness - Happiness goes down when your city is too big - at low happiness you gain less of everything
+Toolsmith: boosts labourer and farmer by making tools - up to a max, they only need so many tools
+Researcher: boosts farmer and labourer's efficiency - up to a max, more researchers than farmer/labourer won't work
+Merchant: Generate coins - Coins can later be used to buy upgrades (tbd)
+
+IDEA
+Add quests for the village to work towards, coin goals, stockpile food, get x amount of materials, have streak of x days
+
+Repeatable tasks? Manage this after task has been created, allow settings as repeatable. Maybe a button on top that says "Edit tasks", which shows buttons. When clicking the 'repeatable' button, a small modal or the like to ask if it's daily, weekly or monthly repeatable. Figure out what to do with that in database.
+
+Repeatables: Add a column to tasks that says "active". New tasks have active as 'null', but repeatable tasks will duplicate itself with the 'active' set as in the future. When fetching tasks you only get the tasks which have 'active' in the past, or null.
 
 Ideas:
 Daily the happiness of the village goes down by a set amount or percentage. Completing tasks will increase this amount.
