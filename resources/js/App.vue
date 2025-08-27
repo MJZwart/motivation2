@@ -3,8 +3,9 @@
     <Navigation />
     <VillageOverview v-if="isLoggedIn" rounded-lg c-white p-2 />
     <div flex flex-col z-1 max-w-3xl mx-auto>
-        <AuthPage v-if="!isLoggedIn" />
-        <TaskListOverview v-else rounded-lg c-white p-2 />
+        <component :is="getActivePage.component" />
+        <!-- <AuthPage v-if="!isLoggedIn" />
+        <TaskListOverview v-else rounded-lg c-white p-2 /> -->
     </div>
 </template>
 
@@ -16,6 +17,7 @@ import Navigation from './Navigation.vue';
 import { isLoggedIn, getMe } from './service/userRepository';
 import { onMounted } from 'vue';
 import ToastContainer from './components/toast/ToastContainer.vue';
+import { getActivePage } from './service/router';
 
 onMounted(async() => {
     await getMe();
