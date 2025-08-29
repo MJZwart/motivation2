@@ -1,51 +1,45 @@
-import { Component, computed, markRaw, ref, shallowRef } from "vue";
-import CompletedOverview from "../completed/CompletedOverview.vue";
 import TaskListOverview from "../tasks/TaskListOverview.vue";
+import CompletedOverview from "../completed/CompletedOverview.vue";
 import Login from "../auth/Login.vue";
 import Register from "../auth/Register.vue";
+import { createRouter, createWebHistory } from "vue-router";
 import { isLoggedIn } from "./userRepository";
 
-export const routes: Record<string, Route> = {
-    completed: {
+export const routes = [
+    {
         component: CompletedOverview,
         path: '/completed',
-        auth: true,
+        meta: {auth: true,},
     },
-    tasks: {
+    {
         component: TaskListOverview,
         path: '/',
-        auth: true,
+        meta: {auth: true,},
     },
-    login: {
+    {
         component: Login,
         path: '/login',
-        auth: false,
+        meta: {auth: false,},
     },
-    register: {
+    {
         component: Register,
         path: '/register',
-        auth: false,
+        meta: {auth: false,},
     },
-}
+];
 
-export const loginRoute = routes['login'];
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+});
 
-const activePage = shallowRef<Route>(loginRoute);
-
-export const setActivePage = (routeName: string) => {
-    const route = routes[routeName];
-    if (!route) return console.error('No route found for name ', routeName);
-    if (route.auth && !isLoggedIn.value) {
-        activePage.value = loginRoute;
-        return;
+router.beforeEach((to, from, next) => {
+    console.log(to)
+    if (to.meta.auth && !isLoggedIn.value) {
+        console.log(from)
+        return next({path: '/login'});
     }
-    activePage.value = route;
-}
+    next();
+});
 
-export const getActivePage = computed(() => activePage.value);
-
-interface Route {
-    component: Component;
-    path: string;
-    auth: boolean;
-}
+export default router;

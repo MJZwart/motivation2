@@ -3,23 +3,14 @@
     <Navigation />
     <VillageOverview v-if="isLoggedIn" rounded-lg c-white p-2 />
     <div flex flex-col z-1 max-w-3xl mx-auto>
-        <component :is="getActivePage.component" />
-        <!-- <AuthPage v-if="!isLoggedIn" />
-        <TaskListOverview v-else rounded-lg c-white p-2 /> -->
+        <RouterView />
     </div>
 </template>
 
 <script setup lang="ts">
-import TaskListOverview from './tasks/TaskListOverview.vue';
 import VillageOverview from './village/VillageOverview.vue';
-import AuthPage from './auth/AuthPage.vue';
 import Navigation from './Navigation.vue';
-import { isLoggedIn, getMe } from './service/userRepository';
-import { onMounted } from 'vue';
+import { isLoggedIn } from './service/userRepository';
 import ToastContainer from './components/toast/ToastContainer.vue';
-import { getActivePage } from './service/router';
-
-onMounted(async() => {
-    await getMe();
-});
+import { RouterView } from 'vue-router';
 </script>
