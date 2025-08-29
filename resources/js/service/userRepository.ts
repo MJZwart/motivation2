@@ -1,5 +1,6 @@
 import axios from "axios";
 import { computed, ref } from "vue";
+import { setActivePage } from "./router";
 
 interface User {
     username: string;
@@ -14,17 +15,20 @@ export const login = async(credentials: {username: string, password: string}) =>
     const {data} = await axios.post('/login', credentials);
     if (!data) return console.error('Login failed, error message needed', data);
     user.value = data.data;
+    setActivePage('tasks');
 }
 
 export const logout = async() => {
     await axios.post('/logout');
     user.value = null;
+    setActivePage('login');
 }
 
 export const register = async(credentials: {username: string, password: string, password_confirmation: string}) => {
     const {data} = await axios.post('/register', credentials);
     if (!data) return console.error('Register failed, error message needed', data);
     user.value = data.data;
+    setActivePage('tasks');
 }
 
 export const getMe = async() => {

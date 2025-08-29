@@ -1,5 +1,5 @@
 <template>
-    <div panel w-full>
+    <div panel w-full mt-2>
         <form flex flex-col gap-1 @submit.prevent="loginUser" mb-2>
             <h3 my-2>Log in</h3>
             <FormError name="username">
