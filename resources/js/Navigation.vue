@@ -1,6 +1,7 @@
 <template>
-    <div bg-white bg-opacity-12 flex p-3>
-        Nav
+    <div bg-white bg-opacity-12 flex p-3 gap-2>
+        <RouterLink clickable to="/">Tasks</RouterLink>
+        <RouterLink clickable to="/completed">Completed</RouterLink>
         <span ml-auto>
             <span v-if="isLoggedIn" clickable @click="logout">Logout</span>
             <span v-else gap-2 flex>

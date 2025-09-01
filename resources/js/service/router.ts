@@ -34,9 +34,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    console.log(to)
     if (to.meta.auth && !isLoggedIn.value) {
-        console.log(from)
         return next({path: '/login'});
     }
     next();
