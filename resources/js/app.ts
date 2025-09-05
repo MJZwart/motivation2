@@ -10,6 +10,11 @@ const app = createApp(App);
 await getMe();
 
 import router from './service/router';
+import { configureEcho } from '@laravel/echo-vue';
+
+configureEcho({
+    broadcaster: 'reverb',
+});
 
 app.use(router);
 
