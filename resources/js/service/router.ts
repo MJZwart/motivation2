@@ -4,6 +4,7 @@ import Login from "../auth/Login.vue";
 import Register from "../auth/Register.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import { isLoggedIn } from "./userRepository";
+import { clearErrors } from "./errorService";
 
 export const routes = [
     {
@@ -34,6 +35,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+    clearErrors();
+    
     if (to.meta.auth && !isLoggedIn.value) {
         return next({path: '/login'});
     }

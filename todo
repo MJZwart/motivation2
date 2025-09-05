@@ -9,7 +9,7 @@
 [ ] Make the three task lists work on smaller devices
 [ ] Add a button to the task lists (each?) to allow for editing. Add edit options in the task component. Allow changing of name and deleting (without completing)
 [ ] Add option to make task repeatable to the editing part. Add 'active' and 'repeatable' (amount of days, 1 for daily, 7 for weekly etc) to database. When completing a repeatable, automatically create a new one with the desired repeatable time as 'active'.
-[ ] Create database for village.
+[x] Create database for village.
 
 Village db
 
@@ -30,6 +30,8 @@ Village db
 -   artist
 -   researcher
 -   merchant
+
+[ ] Ensure proper destruction of data upon logging out (user, village etc)
 
 [ ] ? Create modals
 [ ] When completing a task, gain progress points to village. Show this on the village component (progress bar?)

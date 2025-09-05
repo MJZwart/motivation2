@@ -7,6 +7,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Models\Village;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,7 +18,12 @@ final class AuthController
     public function register(RegisterUserRequest $request) {
         $validated = $request->validated();
 
-        User::create($validated);
+        $user = User::create($validated);
+
+        $village = new Village();
+        $village->user_id = $user->id;
+        $village->name = 'Village';
+        $village->save();
         
         if (Auth::attempt(['username' => $validated['username'], 'password' => $validated['password']])) {
             $request->session()->regenerate();
